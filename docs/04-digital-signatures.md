@@ -1,37 +1,68 @@
 # Digital Signatures Implementation
 
-## Signature Setup
+## Cambodia Requirements
 ```javascript
-const signatureFields = {
+const cambodiaSignature = {
+  type: "digital_signature",  // Required by Sub-Decree No.246
+  requirements: {
+    financialTransactions: true,
+    ministryApproval: "Ministry of Posts and Telecommunications",
+    onlineVerification: true
+  }
+};
+```
+
+## Singapore Requirements
+```javascript
+const singaporeSignature = {
+  requirements: {
+    electronicRecords: true,  // ETA Cap.88
+    signatureAuthentication: true,
+    auditTrail: true
+  },
+  governmentTransactions: {
+    singPassRequired: true,
+    identityVerification: "2FA"
+  }
+};
+```
+
+## Implementation Code
+```javascript
+const signatureSetup = {
   signers: [{
-    name: "First Party",
+    name: "Cambodia Party",
     email: "party1@example.com",
-    signature_request_delivery_methods: ["email"],
-    multi_factor_authentications: ["sms_verification_code"]
+    authentication: {
+      type: "digital_signature",
+      verification: "ministry_approved"
+    }
+  }, {
+    name: "Singapore Party",
+    email: "party2@example.com",
+    authentication: {
+      type: "electronic_signature",
+      method: "singpass",
+      twoFactor: true
+    }
   }]
 };
 ```
 
-## Authentication Methods
-- Email verification
-- SMS verification
-- Mobile authentication
-- Biometric verification
+## Compliance Requirements
+1. Cambodia:
+   - Digital signatures for financial transactions
+   - Ministry-approved certification
+   - Online verification system
+
+2. Singapore:
+   - Electronic Transactions Act compliance
+   - SingPass for government transactions
+   - Secure authentication methods
+   - Record retention requirements
 
 ## Security Features
-1. Multi-factor authentication
-2. Audit trails
-3. Timestamp certificates
-4. Digital certificates
-
-## Compliance Requirements
-- eIDAS (EU)
-- ESIGN Act (US)
-- Electronic Transactions Act (Singapore)
-- Cambodia E-commerce Law
-
-## Best Practices
-- Always verify signer identity
-- Maintain audit logs
-- Use secure delivery methods
-- Implement MFA when possible
+- Multi-factor authentication
+- Digital certificates
+- Audit logs
+- Timestamp validation
