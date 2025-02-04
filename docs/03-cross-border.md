@@ -1,37 +1,41 @@
 # Cross-Border Considerations
 
 ## Legal Framework
+- Cambodia: Sub-Decree No.246 on Digital Signatures
+- Singapore: Electronic Transactions Act (Cap. 88)
+- ASEAN Framework on Personal Data Protection
+- Cross-border Security Regulations
+
+## Implementation Requirements
 ```javascript
-const crossBorderElements = [
-  {
-    type: "text_normal",
-    text: "This Agreement complies with:"
+const legalCompliance = {
+  cambodia: {
+    digitalSignature: true,  // Required for financial transactions
+    regulatoryBody: "Ministry of Posts and Telecommunications"
   },
-  {
-    type: "unordered_list_item",
-    text: "ASEAN Framework on Personal Data Protection"
-  },
-  {
-    type: "unordered_list_item",
-    text: "Local data protection laws"
+  singapore: {
+    electronicSignature: {
+      validityRequirements: [
+        "Writing requirement satisfied",
+        "Signature requirement satisfied",
+        "Electronic record retention"
+      ]
+    },
+    governmentTransactions: {
+      singPassRequired: true  // For public sector entities
+    }
   }
-];
+};
 ```
 
 ## Key Considerations
-1. Multiple jurisdictions
-2. Data protection regulations
-3. Electronic signature laws
-4. Enforcement mechanisms
+1. Digital signature requirements in Cambodia
+2. Singapore ETA compliance
+3. Cross-border data transfer rules
+4. Local authentication methods
 
-## Implementation
-- Jurisdiction-specific clauses
-- Language requirements
-- Digital signature compliance
-- Cross-border data transfer rules
-
-## Common Challenges
-- Conflicting laws
-- Authentication requirements
-- Language barriers
-- Enforcement issues
+## Best Practices
+- Use qualified digital signatures for Cambodia
+- Implement SingPass for Singapore government entities
+- Maintain comprehensive audit trails
+- Follow ASEAN data protection guidelines
